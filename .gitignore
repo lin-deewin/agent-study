@@ -1,0 +1,6 @@
+output/
+.claude/
+.env
+*.txt
+out.ext
+
