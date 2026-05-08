@@ -3,4 +3,6 @@ output/
 .env
 *.txt
 out.ext
-
+.claude
+ai_env/
+_pycache_/
