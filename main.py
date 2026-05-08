@@ -1,3 +1,10 @@
+#
+# 这个示例展示了如何构建一个单体 Agent，利用 LangChain 的 LLM 和工具能力，来撰写一份关于电脑主机配置的结构化简报。
+# 1. 初始化大脑 (LLM)
+# 2. 初始化工具 (Tools)
+# 3. 设定系统提示词 (System Prompt)
+# 4. 构建 Agent, 指定Tools，提示词system_prompt，返回格式response_format
+# 5. 执行任务 使用的是黑盒的方式
 import json
 import os
 from pydantic import BaseModel, Field, SecretStr
@@ -13,7 +20,6 @@ from langchain.agents import create_agent
 # 结构化输出：定义简报的标准 JSON 格式
 class BriefingOutput(BaseModel):
     """硬件配置简报的结构化输出"""
-
     标题: str = Field(description="简报标题")
     关键词: list[str] = Field(description="3-5个核心关键词")
     核心配置推荐: str = Field(description="推荐的核心硬件配置及理由")
