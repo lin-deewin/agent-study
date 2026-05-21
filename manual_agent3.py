@@ -115,10 +115,12 @@ def call_llm(state: AgentState) -> dict:
                 print(text, end="", flush=True)
         elif isinstance(content, str) and content:
             print(content, end="", flush=True)
-        full_message = chunk if full_message is None else full_message + chunk
+        full_message = chunk if full_message is None else full_message + chunk # type: ignore
 
     print()
 
+    # 在调用完LLM后，检查是否有工具调用计划划。
+    # 没有的话就结束搜索阶段，有的话就进入工具调用节点。
     has_tools = bool(full_message.tool_calls)
     if not has_tools:
         print("  [决策] 不再需要工具，搜索阶段结束")
